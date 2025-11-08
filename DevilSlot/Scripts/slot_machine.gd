@@ -16,13 +16,26 @@ var original_position : Vector2  # To store the camera's original position
 var last_won = 0
 @onready var spin_button:=$Button
 
-@export var roll_particle: PackedScene
 @export var last_particle: PackedScene
 
-var sprites : Array = []
 
 # Ścieżka do folderu ze sprite'ami
 var folder_path : String = "res://Assets/Colored/"
+var sprites : Array = [
+	preload("res://Assets/Colored/genericItem_color_001.png"),
+	preload("res://Assets/Colored/genericItem_color_002.png"),
+	preload("res://Assets/Colored/genericItem_color_003.png"),
+	preload("res://Assets/Colored/genericItem_color_004.png"),
+	preload("res://Assets/Colored/genericItem_color_005.png"),
+	preload("res://Assets/Colored/genericItem_color_006.png"),
+	preload("res://Assets/Colored/genericItem_color_007.png"),
+	preload("res://Assets/Colored/genericItem_color_008.png"),
+	preload("res://Assets/Colored/genericItem_color_009.png"),
+	preload("res://Assets/Colored/genericItem_color_010.png"),
+	preload("res://Assets/Colored/genericItem_color_011.png"),
+	preload("res://Assets/Colored/genericItem_color_012.png"),
+	preload("res://Assets/Colored/genericItem_color_013.png")
+]
 
 var bet = 0
 var reels = [] # Lista bębnów
@@ -47,7 +60,7 @@ func _ready():
 	$Label2.text = texts[randi_range(0,texts.size()-1)]
 	original_position = camera.position
 	# Inicjalizuj bębny
-	load_sprites_from_folder(folder_path) 
+	#load_sprites_from_folder(folder_path) 
 	btn5modulate = $btn5.modulate
 	for j in range(row_reels):
 		for i in range(num_reels):
@@ -55,8 +68,8 @@ func _ready():
 			reel.texture = sprites[randi_range(1,sprites.size()-1)] # Wybór losowego symbolu na start
 			reel.scale = Vector2(.8,.8)
 			reel.position = Vector2(100 * i, 100 * j) # Przesuń bębny na ekranie
-			
-			add_child(reel)
+			$Reels.add_child(reel)
+			activate_smoke()
 			reels.append(reel)
 			reel_positions.append(0)  # Początkowa pozycja bębna
 	
@@ -102,18 +115,19 @@ func _on_spin_pressed():
 		return
 	spinning = true
 	# Rozpocznij obrót bębnów
+	
 	for i in range(num_reels*row_reels):
 		reel_positions[i] = 0
 		var reel = reels[i]
 		reel.texture = sprites[randi_range(1,sprites.size()-1)]
-		var explosion = roll_particle.instantiate()
-		explosion.global_position = reel.position
-		get_tree().current_scene.add_child(explosion)
+		#$Reels.add_child(reel)
+		activate_smoke()
 		# Uruchom animację obrotu
 		start_reel_spin(i)
 
 # Funkcja do rozpoczęcia obrotu bębna
 func start_reel_spin(reel_index):
+	start_shake()
 	stop_reel_spin(reel_index)
 
 # Funkcja do zatrzymania bębna
@@ -138,19 +152,6 @@ func scheck_result():
 			# Jeśli brak tekstury, dodaj pusty wynik lub placeholder
 			result.append("Brak tekstury")
 	print("Wynik: " + str(result))
-
-func load_sprites_from_folder(path: String):
-	var dir = DirAccess.open(path)  # Używamy DirAccess do otwarcia folderu
-	if dir:
-		dir.list_dir_begin()  # Zaczynamy przeglądanie folderu
-		var file_name = dir.get_next()
-		while file_name != "":
-			# Sprawdzamy, czy to jest plik z obrazkiem (np. .png)
-			if file_name.ends_with(".png"):  # Możesz dostosować rozszerzenie
-				var texture = load(path + file_name)  # Ładujemy teksturę
-				sprites.append(texture)  # Dodajemy do tablicy
-			file_name = dir.get_next()  # Przechodzimy do następnego pliku
-		dir.list_dir_end()  # Kończymy przeglądanie folderu
 
 func _on_button_pressed() -> void:
 	_on_spin_pressed()
@@ -209,6 +210,8 @@ func updateLastWon():
 
 func _on_btn_1_pressed() -> void:
 	updateTicketBetValue(1) # Replace with function body.
+	$btn1.modulate = Color(1, 0, 0, 0.5)
+	$btn1/btn1timer.start()
 
 func _on_btn_5_pressed() -> void:
 	updateTicketBetValue(5)
@@ -220,13 +223,19 @@ func _on_btn_5_timer_timeout() -> void:
 
 func _on_btn_2_pressed() -> void:
 	updateTicketBetValue(bet*2)
+	$btn2.modulate = Color(1, 0, 0, 0.5)
+	$btn2/btn2timer.start()
 
 func _on_btn_10_pressed() -> void:
 	updateTicketBetValue(bet*10)
+	$btn10.modulate = Color(1, 0, 0, 0.5)
+	$btn105/btn10timer.start()
 
 
 func _on_btn_25_pressed() -> void:
 	updateTicketBetValue(bet*25)
+	$btn25.modulate = Color(1, 0, 0, 0.5)
+	$btn25/btn25timer.start()
 
 
 func _on_result_timer_timeout() -> void:
@@ -255,6 +264,7 @@ func _on_result_timer_timeout() -> void:
 	$Button.disabled = true
 	updateTicketBet()
 	if(tickets>999):
+		$Reels.visible = false
 		$VideoStreamPlayer.visible = true
 		$VideoStreamPlayer.play()
 		$LastOrderTimer.start()
@@ -305,3 +315,63 @@ func start_info_anim():
 
 func _on_anim_cont_timeout() -> void:
 	$AnimationPlayer.play("PlayIdle")
+
+func activate_smoke():
+	$SmokeRoll.emitting = true
+	$SmokeRoll2.emitting = true
+	$SmokeRoll3.emitting = true
+	$SmokeRoll4.emitting = true
+	$SmokeRoll5.emitting = true
+	$SmokeRoll6.emitting = true
+	$SmokeRoll7.emitting = true
+	$SmokeRoll8.emitting = true
+	$SmokeRoll9.emitting = true
+	$SmokeRoll10.emitting = true
+	$SmokeRoll11.emitting = true
+	$SmokeRoll12.emitting = true
+	$SmokeRoll13.emitting = true
+	$SmokeRoll14.emitting = true
+	$SmokeRoll15.emitting = true
+	$SmokeRoll16.emitting = true
+	$SmokeRoll17.emitting = true
+	$SmokeRoll18.emitting = true
+	$SmokeRoll19.emitting = true
+	$SmokeRoll20.emitting = true
+	$SmokeRoll21.emitting = true
+	$SmokeRoll22.emitting = true
+	$SmokeRoll23.emitting = true
+	$SmokeRoll24.emitting = true
+	$SmokeRoll25.emitting = true
+	$SmokeRoll26.emitting = true
+	$SmokeRoll27.emitting = true
+	$SmokeRoll28.emitting = true
+	$SmokeRoll29.emitting = true
+	$SmokeRoll30.emitting = true
+	$SmokeRoll31.emitting = true
+	$SmokeRoll32.emitting = true
+	$SmokeRoll33.emitting = true
+	$SmokeRoll34.emitting = true
+	$SmokeRoll35.emitting = true
+	$SmokeRoll36.emitting = true
+	$SmokeRoll37.emitting = true
+	$SmokeRoll38.emitting = true
+	$SmokeRoll39.emitting = true
+	$SmokeRoll40.emitting = true
+	$SmokeRoll41.emitting = true
+	$SmokeRoll42.emitting = true
+
+
+func _on_btn_1_timer_timeout() -> void:
+	$btn1.modulate = btn5modulate
+
+
+func _on_btn_2_timer_timeout() -> void:
+	$btn2.modulate = btn5modulate
+
+
+func _on_btn_10_timer_timeout() -> void:
+	$btn10.modulate = btn5modulate
+
+
+func _on_btn_25_timer_timeout() -> void:
+	$btn25.modulate = btn5modulate

@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccgl60l2q5ic0"]
+
+[ext_resource type="Texture2D" uid="uid://b7crssimrcikc" path="res://Assets/Other/circle.png" id="3_q26mt"]
+
+[sub_resource type="Curve" id="Curve_fgsr3"]
+_data = [Vector2(0.015151501, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_5a53c"]
+curve = SubResource("Curve_fgsr3")
+
+[sub_resource type="Gradient" id="Gradient_werpg"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_biwbk"]
+gradient = SubResource("Gradient_werpg")
+
+[sub_resource type="Curve" id="Curve_rdgba"]
+_data = [Vector2(0.053030297, 0), 0.0, 0.0, 0, 0, Vector2(0.32575756, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cojjv"]
+curve = SubResource("Curve_rdgba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rdgba"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 100.0
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, -300, 0)
+scale_min = 0.29999998
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_cojjv")
+color = Color(0.16565639, 0.16565642, 0.16565639, 1)
+color_ramp = SubResource("GradientTexture1D_biwbk")
+alpha_curve = SubResource("CurveTexture_5a53c")
+
+[node name="SmokeRoll" type="GPUParticles2D"]
+emitting = false
+amount = 60
+texture = ExtResource("3_q26mt")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_rdgba")

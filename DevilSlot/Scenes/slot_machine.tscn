@@ -1,7 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://dmvikv0mb22rk"]
+[gd_scene load_steps=32 format=3 uid="uid://dmvikv0mb22rk"]
 
 [ext_resource type="Script" uid="uid://vt46scjtgrst" path="res://Scripts/slot_machine.gd" id="1_rvkpq"]
-[ext_resource type="PackedScene" uid="uid://cd5gb2jidlllp" path="res://Scenes/roll_particle.tscn" id="2_8m11x"]
 [ext_resource type="PackedScene" uid="uid://c6qd0tnlmg70k" path="res://Scenes/last_particle.tscn" id="3_caxuc"]
 [ext_resource type="PackedScene" uid="uid://x8d80h7ki5jx" path="res://Scenes/shader.tscn" id="4_m50ai"]
 [ext_resource type="Texture2D" uid="uid://bh2swlv2fs3py" path="res://Assets/arms/image1.png" id="5_ungeg"]
@@ -23,7 +22,9 @@
 [ext_resource type="AudioStream" uid="uid://bdht7kreiu4l6" path="res://Assets/Sounds/haha.mp3" id="21_2vl4n"]
 [ext_resource type="Texture2D" uid="uid://dr2towgkdq86a" path="res://Assets/Other/button.png" id="22_iyiok"]
 [ext_resource type="VideoStream" uid="uid://bk8taou5eme5k" path="res://win.ogv" id="23_xg2j0"]
+[ext_resource type="PackedScene" uid="uid://ccgl60l2q5ic0" path="res://Scenes/smoke_roll.tscn" id="24_ddh1n"]
 [ext_resource type="PackedScene" uid="uid://cdhupjxsskcdo" path="res://Scenes/old_shader.tscn" id="24_okmdp"]
+[ext_resource type="Script" uid="uid://dqsxi1ggswyk7" path="res://Scenes/point_light_2d.gd" id="25_cs3gy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4tvcy"]
 shader = ExtResource("16_ncxei")
@@ -165,7 +166,6 @@ _data = {
 [node name="slot_machine" type="Node"]
 script = ExtResource("1_rvkpq")
 symbols = [null]
-roll_particle = ExtResource("2_8m11x")
 last_particle = ExtResource("3_caxuc")
 
 [node name="Shader" parent="." instance=ExtResource("4_m50ai")]
@@ -311,6 +311,8 @@ theme_override_font_sizes/font_size = 50
 text = "+ 1
 "
 
+[node name="btn1timer" type="Timer" parent="btn1"]
+
 [node name="btn5" type="Button" parent="."]
 custom_minimum_size = Vector2(68, 68)
 offset_left = 66.0
@@ -338,6 +340,8 @@ disabled = true
 text = "X 2
 "
 
+[node name="btn2timer" type="Timer" parent="btn2"]
+
 [node name="btn10" type="Button" parent="."]
 custom_minimum_size = Vector2(68, 68)
 offset_left = 266.0
@@ -350,6 +354,8 @@ disabled = true
 text = "X 10
 "
 
+[node name="btn10timer" type="Timer" parent="btn10"]
+
 [node name="btn25" type="Button" parent="."]
 custom_minimum_size = Vector2(68, 68)
 offset_left = 366.0
@@ -361,6 +367,8 @@ theme_override_font_sizes/font_size = 50
 disabled = true
 text = "X 25
 "
+
+[node name="btn25timer" type="Timer" parent="btn25"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_4tvcy")
@@ -609,13 +617,459 @@ libraries = {
 wait_time = 2.0
 one_shot = true
 
+[node name="Reels" type="Node2D" parent="."]
+
+[node name="SmokeRoll" parent="." instance=ExtResource("24_ddh1n")]
+
+[node name="SmokeRoll2" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(79, -3)
+
+[node name="SmokeRoll3" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(160, -3)
+
+[node name="SmokeRoll4" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(227, -3)
+
+[node name="SmokeRoll5" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(287, 0)
+
+[node name="SmokeRoll6" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(356, -5)
+
+[node name="SmokeRoll7" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(4, 57)
+
+[node name="SmokeRoll8" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(83, 54)
+
+[node name="SmokeRoll9" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(164, 54)
+
+[node name="SmokeRoll10" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(231, 54)
+
+[node name="SmokeRoll11" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(291, 57)
+
+[node name="SmokeRoll12" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(360, 52)
+
+[node name="SmokeRoll13" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(1, 131)
+
+[node name="SmokeRoll14" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(80, 128)
+
+[node name="SmokeRoll15" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(161, 128)
+
+[node name="SmokeRoll16" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(228, 128)
+
+[node name="SmokeRoll17" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(288, 131)
+
+[node name="SmokeRoll18" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(357, 126)
+
+[node name="SmokeRoll19" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(-4, 196)
+
+[node name="SmokeRoll20" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(75, 193)
+
+[node name="SmokeRoll21" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(156, 193)
+
+[node name="SmokeRoll22" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(223, 193)
+
+[node name="SmokeRoll23" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(283, 196)
+
+[node name="SmokeRoll24" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(352, 191)
+
+[node name="SmokeRoll25" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(5, 255)
+
+[node name="SmokeRoll26" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(84, 252)
+
+[node name="SmokeRoll27" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(165, 252)
+
+[node name="SmokeRoll28" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(232, 252)
+
+[node name="SmokeRoll29" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(292, 255)
+
+[node name="SmokeRoll30" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(361, 250)
+
+[node name="SmokeRoll31" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(6, 312)
+
+[node name="SmokeRoll32" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(85, 309)
+
+[node name="SmokeRoll33" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(166, 309)
+
+[node name="SmokeRoll34" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(233, 309)
+
+[node name="SmokeRoll35" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(293, 312)
+
+[node name="SmokeRoll36" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(362, 307)
+
+[node name="SmokeRoll37" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(-1, 356)
+
+[node name="SmokeRoll38" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(78, 353)
+
+[node name="SmokeRoll39" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(159, 353)
+
+[node name="SmokeRoll40" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(226, 353)
+
+[node name="SmokeRoll41" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(286, 356)
+
+[node name="SmokeRoll42" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(355, 351)
+
+[node name="SmokeRoll43" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(-1, 356)
+
+[node name="SmokeRoll44" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(78, 353)
+
+[node name="SmokeRoll45" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(159, 353)
+
+[node name="SmokeRoll46" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(226, 353)
+
+[node name="SmokeRoll47" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(286, 356)
+
+[node name="SmokeRoll48" parent="." instance=ExtResource("24_ddh1n")]
+position = Vector2(355, 351)
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, -83)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D17" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, -32)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D18" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 21)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D19" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 60)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D20" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 107)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D21" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 155)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D22" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 192)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D23" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 223)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D24" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 267)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D25" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 306)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D26" type="PointLight2D" parent="Lights"]
+position = Vector2(-62, 306)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D27" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, -39.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D28" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 11.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D29" type="PointLight2D" parent="Lights"]
+position = Vector2(499, 65)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D30" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 103.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D31" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 150.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D32" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 198.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D33" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 235.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D34" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 266.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D35" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 310.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D36" type="PointLight2D" parent="Lights"]
+position = Vector2(466.5, 349.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D37" type="PointLight2D" parent="Lights"]
+position = Vector2(433.5, 330.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
+position = Vector2(24, -83)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
+position = Vector2(106, -83)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lights"]
+position = Vector2(190, -83)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Lights"]
+position = Vector2(269, -83)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D6" type="PointLight2D" parent="Lights"]
+position = Vector2(351, -83)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D7" type="PointLight2D" parent="Lights"]
+position = Vector2(409, -80)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D8" type="PointLight2D" parent="Lights"]
+position = Vector2(458, -81)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D9" type="PointLight2D" parent="Lights"]
+position = Vector2(-61.5, 388.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D10" type="PointLight2D" parent="Lights"]
+position = Vector2(24.5, 388.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D11" type="PointLight2D" parent="Lights"]
+position = Vector2(106.5, 388.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D12" type="PointLight2D" parent="Lights"]
+position = Vector2(190.5, 388.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D13" type="PointLight2D" parent="Lights"]
+position = Vector2(269.5, 388.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D14" type="PointLight2D" parent="Lights"]
+position = Vector2(351.5, 388.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D15" type="PointLight2D" parent="Lights"]
+position = Vector2(409.5, 391.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
+[node name="PointLight2D16" type="PointLight2D" parent="Lights"]
+position = Vector2(458.5, 390.5)
+color = Color(0.79184693, 0.4261369, 0, 1)
+energy = 2.0
+texture = ExtResource("17_52qex")
+texture_scale = 5.0
+script = ExtResource("25_cs3gy")
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Button/ResultTimer" to="." method="_on_result_timer_timeout"]
 [connection signal="pressed" from="btn1" to="." method="_on_btn_1_pressed"]
+[connection signal="timeout" from="btn1/btn1timer" to="." method="_on_btn_1_timer_timeout"]
 [connection signal="pressed" from="btn5" to="." method="_on_btn_5_pressed"]
 [connection signal="timeout" from="btn5/btn5timer" to="." method="_on_btn_5_timer_timeout"]
 [connection signal="pressed" from="btn2" to="." method="_on_btn_2_pressed"]
+[connection signal="timeout" from="btn2/btn2timer" to="." method="_on_btn_2_timer_timeout"]
 [connection signal="pressed" from="btn10" to="." method="_on_btn_10_pressed"]
+[connection signal="timeout" from="btn10/btn10timer" to="." method="_on_btn_10_timer_timeout"]
 [connection signal="pressed" from="btn25" to="." method="_on_btn_25_pressed"]
+[connection signal="timeout" from="btn25/btn25timer" to="." method="_on_btn_25_timer_timeout"]
 [connection signal="timeout" from="LastOrderTimer" to="." method="_on_last_order_timer_timeout"]
 [connection signal="timeout" from="AnimationPlayer/AnimCont" to="." method="_on_anim_cont_timeout"]

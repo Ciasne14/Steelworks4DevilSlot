@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw2ew71grxsg"]
+
+[ext_resource type="Script" uid="uid://b1buqschwr4d7" path="res://dice_game.gd" id="1_a4m0k"]
+
+[node name="DiceGame" type="Node2D"]
+script = ExtResource("1_a4m0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="DiceRollResult" type="Label" parent="."]
+offset_left = 497.0
+offset_top = 6.0
+offset_right = 537.0
+offset_bottom = 29.0
+
+[node name="DicePlayer" type="Node2D" parent="."]
+
+[node name="EvilDie1" type="Sprite2D" parent="DicePlayer"]
+position = Vector2(347, 73)
+
+[node name="EvilDie2" type="Sprite2D" parent="DicePlayer"]
+position = Vector2(727, 86)
+
+[node name="PlayerDie1" type="Sprite2D" parent="DicePlayer"]
+
+[node name="PlayerDie2" type="Sprite2D" parent="DicePlayer"]
+
+[node name="DiceButton" type="Button" parent="DicePlayer"]
+offset_left = 510.0
+offset_top = 256.0
+offset_right = 518.0
+offset_bottom = 264.0
+text = "Roll"
+
+[node name="BetLower" type="Button" parent="DicePlayer"]
+offset_left = 161.0
+offset_top = 333.0
+offset_right = 169.0
+offset_bottom = 341.0
+text = "Lower"
+
+[node name="BetHigher" type="Button" parent="DicePlayer"]
+offset_left = 813.0
+offset_top = 373.0
+offset_right = 821.0
+offset_bottom = 381.0
+text = "Higher"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Restart" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0

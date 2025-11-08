@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bomsn1mjnhtxc"]
+
+[ext_resource type="PackedScene" uid="uid://3cw2pi4d5jnf" path="res://Scenes/back_to_menu.tscn" id="1_r18jl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r18jl"]
+size = Vector2(101, 51)
+
+[node name="Credits" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 431.0
+offset_top = 278.0
+offset_right = 568.0
+offset_bottom = 337.0
+theme_override_font_sizes/font_size = 43
+text = "Azghal"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 485.0
+offset_right = 636.0
+offset_bottom = 544.0
+theme_override_font_sizes/font_size = 43
+text = "Exit"
+
+[node name="Area2D" type="Area2D" parent="Label4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label4/Area2D"]
+position = Vector2(40.5, 32.5)
+shape = SubResource("RectangleShape2D_r18jl")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 571.0
+offset_top = 374.0
+offset_right = 789.0
+offset_bottom = 433.0
+theme_override_font_sizes/font_size = 43
+text = "Godwinek"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 503.0
+offset_top = 146.0
+offset_right = 721.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 43
+text = "EndRayRei"
+
+[node name="TentBalloon" parent="." instance=ExtResource("1_r18jl")]
+position = Vector2(542, 671)

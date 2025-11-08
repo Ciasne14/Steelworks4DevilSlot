@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://x8d80h7ki5jx"]
+
+[ext_resource type="Shader" uid="uid://rj8jjtxjeb23" path="res://slot_machine.gdshader" id="1_s3gco"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwwtv"]
+shader = ExtResource("1_s3gco")
+shader_parameter/camera_position = Vector2(0, 0)
+shader_parameter/camera_offset = Vector2(0, 0)
+shader_parameter/camera_position_speed = 0.025
+shader_parameter/camera_offset_speed = 0.025
+shader_parameter/noise_blend = 1.0
+shader_parameter/noise_speed_1 = 1.0
+shader_parameter/noise_speed_2 = 1.0
+shader_parameter/noise_dir_1 = Vector2(1, 1)
+shader_parameter/noise_dir_2 = Vector2(1, -1)
+shader_parameter/smoke_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/density = 1.0
+
+[node name="Shader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_top = -223.0
+offset_right = 316.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qwwtv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

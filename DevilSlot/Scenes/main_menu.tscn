@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bckybmk626j10"]
+
+[ext_resource type="PackedScene" uid="uid://x1yh7yc6vtcn" path="res://Scenes/player.tscn" id="1_28flt"]
+[ext_resource type="PackedScene" uid="uid://xwu2m8hbc2r3" path="res://Scenes/gameEntrance.tscn" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://bn4a0up8j650k" path="res://Scripts/gameEntrance.gd" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://82itjatublao" path="res://Scenes/gameExit.tscn" id="4_ce3w2"]
+[ext_resource type="Script" uid="uid://cv4d4a1td85hf" path="res://Scripts/gameExit.gd" id="5_n45e2"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 55.0
+offset_top = 381.0
+offset_right = 286.0
+offset_bottom = 423.0
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 994.0
+offset_top = 357.0
+offset_right = 1225.0
+offset_bottom = 399.0
+theme_override_font_sizes/font_size = 30
+text = "Credits"
+
+[node name="player" parent="." instance=ExtResource("1_28flt")]
+position = Vector2(574, 430)
+
+[node name="Entrance" parent="." instance=ExtResource("2_48xlc")]
+position = Vector2(574, 186)
+script = ExtResource("3_1ehe0")
+
+[node name="Label" type="Label" parent="Entrance"]
+offset_left = -103.0
+offset_top = 13.0
+offset_right = 128.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 30
+text = "Enter the Circus"
+
+[node name="Exit" parent="." instance=ExtResource("4_ce3w2")]
+position = Vector2(582, 707)
+script = ExtResource("5_n45e2")
+
+[node name="Label3" type="Label" parent="Exit"]
+offset_left = -30.0
+offset_top = -189.0
+offset_right = 201.0
+offset_bottom = -147.0
+theme_override_font_sizes/font_size = 30
+text = "Exit"

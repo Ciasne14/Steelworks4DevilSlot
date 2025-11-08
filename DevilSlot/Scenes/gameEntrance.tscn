@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://xwu2m8hbc2r3"]
+
+[ext_resource type="Script" uid="uid://dq6g2kdn27e34" path="res://Scripts/tent_balloon.gd" id="1_5mf52"]
+[ext_resource type="Texture2D" uid="uid://urh6r1bftkom" path="res://icon.svg" id="2_ka67m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4ph6"]
+size = Vector2(129, 127)
+
+[node name="TentBalloon" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_5mf52")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -65)
+texture = ExtResource("2_ka67m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -66.5)
+shape = SubResource("RectangleShape2D_d4ph6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

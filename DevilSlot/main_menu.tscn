@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dre3aviibt67h"]
+[gd_scene load_steps=6 format=3 uid="uid://dre3aviibt67h"]
 
 [ext_resource type="Texture2D" uid="uid://crlunofbu7cgl" path="res://Assets/Other/main_menu.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://f3xp8llmb2y3" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://bpcmj4a34obxi" path="res://Assets/Other/cone.png" id="3_glbon"]
 [ext_resource type="Texture2D" uid="uid://dr2towgkdq86a" path="res://Assets/Other/button.png" id="3_jix8l"]
 [ext_resource type="FontFile" uid="uid://bfu223jr6vile" path="res://Assets/Other/October Crow.ttf" id="4_glbon"]
 
@@ -20,12 +21,23 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_06t4h")
 
+[node name="Cone2" type="Sprite2D" parent="."]
+position = Vector2(666, 981)
+rotation = 1.2770226
+texture = ExtResource("3_glbon")
+
+[node name="Cone3" type="Sprite2D" parent="."]
+position = Vector2(745, 992)
+rotation = 1.4020555
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_glbon")
+
 [node name="Panel" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 670.0
-offset_top = 967.0
-offset_right = 903.0
-offset_bottom = 1134.0
+offset_left = 445.0
+offset_top = 983.0
+offset_right = 678.0
+offset_bottom = 1150.0
 texture = ExtResource("3_jix8l")
 
 [node name="Label" type="Label" parent="Panel"]
@@ -48,12 +60,50 @@ To Add Bets"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1542.0
+offset_top = 521.0
+offset_right = 1777.0
+offset_bottom = 684.0
+
+[node name="Panel5" type="TextureRect" parent="Button"]
+layout_mode = 0
+offset_right = 233.0
+offset_bottom = 167.0
+texture = ExtResource("3_jix8l")
+
+[node name="Label" type="Label" parent="Button/Panel5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -52.5
+offset_right = 118.0
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_glbon")
+theme_override_font_sizes/font_size = 50
+text = "CLICK HERE TO START"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Cone6" type="Sprite2D" parent="."]
+position = Vector2(1277, 740)
+rotation = -1.4986686
+texture = ExtResource("3_glbon")
+
 [node name="Panel3" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1182.0
-offset_top = 630.0
-offset_right = 1415.0
-offset_bottom = 797.0
+offset_left = 1351.0
+offset_top = 673.0
+offset_right = 1584.0
+offset_bottom = 840.0
 texture = ExtResource("3_jix8l")
 
 [node name="Label" type="Label" parent="Panel3"]
@@ -76,12 +126,81 @@ To Spin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Cone8" type="Sprite2D" parent="."]
+position = Vector2(1255.9281, 274)
+rotation = -1.4986686
+texture = ExtResource("3_glbon")
+
+[node name="Panel5" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1329.9281
+offset_top = 207.0
+offset_right = 1562.9281
+offset_bottom = 374.0
+texture = ExtResource("3_jix8l")
+
+[node name="Label" type="Label" parent="Panel5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_glbon")
+theme_override_font_sizes/font_size = 50
+text = "MAGIC!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cone9" type="Sprite2D" parent="."]
+position = Vector2(796.9999, 740)
+rotation = -3.0914493
+texture = ExtResource("3_glbon")
+
+[node name="Panel6" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 652.9281
+offset_top = 588.0
+offset_right = 885.9281
+offset_bottom = 755.0
+texture = ExtResource("3_jix8l")
+
+[node name="Label" type="Label" parent="Panel6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_glbon")
+theme_override_font_sizes/font_size = 50
+text = "GOAL: 1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cone" type="Sprite2D" parent="."]
+position = Vector2(370, 758)
+rotation = 0.5761576
+texture = ExtResource("3_glbon")
+
 [node name="Panel4" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 754.0
-offset_right = 474.0
-offset_bottom = 879.0
+offset_left = 16.0
+offset_top = 802.0
+offset_right = 417.0
+offset_bottom = 927.0
 texture = ExtResource("3_jix8l")
 
 [node name="Label" type="Label" parent="Panel4"]
@@ -102,6 +221,20 @@ theme_override_font_sizes/font_size = 50
 text = "Free knowledge"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Cone4" type="Sprite2D" parent="."]
+position = Vector2(1078, 1009)
+rotation = -0.9274971
+texture = ExtResource("3_glbon")
+
+[node name="Cone5" type="Sprite2D" parent="."]
+position = Vector2(1142, 988.99994)
+rotation = -0.9152974
+texture = ExtResource("3_glbon")
+
+[node name="Cone7" type="Sprite2D" parent="."]
+position = Vector2(1186, 1018)
+texture = ExtResource("3_glbon")
 
 [node name="Panel2" type="TextureRect" parent="."]
 layout_mode = 0
@@ -130,3 +263,5 @@ text = "E R T
 To Multiply Bets"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

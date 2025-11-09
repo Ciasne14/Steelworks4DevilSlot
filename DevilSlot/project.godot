@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Devil Slot"
-run/main_scene="uid://dre3aviibt67h"
+run/main_scene="uid://bsugqcpgmk8dv"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://d2mb6yrjt3isq"
+
+[autoload]
+
+Global="*res://Scripts/global.gd"
 
 [display]
 

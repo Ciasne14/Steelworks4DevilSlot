@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dmvikv0mb22rk"]
+[gd_scene load_steps=33 format=3 uid="uid://dmvikv0mb22rk"]
 
 [ext_resource type="Script" uid="uid://vt46scjtgrst" path="res://Scripts/slot_machine.gd" id="1_rvkpq"]
 [ext_resource type="PackedScene" uid="uid://c6qd0tnlmg70k" path="res://Scenes/last_particle.tscn" id="3_caxuc"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ccgl60l2q5ic0" path="res://Scenes/smoke_roll.tscn" id="24_ddh1n"]
 [ext_resource type="PackedScene" uid="uid://cdhupjxsskcdo" path="res://Scenes/old_shader.tscn" id="24_okmdp"]
 [ext_resource type="Script" uid="uid://dqsxi1ggswyk7" path="res://Scenes/point_light_2d.gd" id="25_cs3gy"]
+[ext_resource type="AudioStream" uid="uid://bul5ocoll5d0m" path="res://Scenes/click.mp3" id="26_05f6v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4tvcy"]
 shader = ExtResource("16_ncxei")
@@ -1058,6 +1059,9 @@ energy = 2.0
 texture = ExtResource("17_52qex")
 texture_scale = 5.0
 script = ExtResource("25_cs3gy")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_05f6v")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Button/ResultTimer" to="." method="_on_result_timer_timeout"]

@@ -360,11 +360,15 @@ func updateLastWon():
 	$LastWon/LastWon2.text = str(last_won)
 
 func _on_btn_1_pressed() -> void:
+	$Click.play()
+	$Click.pitch_scale = randf_range(0.5,1.5)
 	updateTicketBetValue(1) # Replace with function body.
 	$btn1.modulate = Color(1, 0, 0, 0.5)
 	$btn1/btn1timer.start()
 
 func _on_btn_5_pressed() -> void:
+	$Click.play()
+	$Click.pitch_scale = randf_range(0.5,1.5)
 	updateTicketBetValue(5)
 	$btn5.modulate = Color(1, 0, 0, 0.5)
 	$btn5/btn5timer.start()
@@ -373,17 +377,23 @@ func _on_btn_5_timer_timeout() -> void:
 	$btn5.modulate = btn5modulate
 
 func _on_btn_2_pressed() -> void:
+	$Click.play()
+	$Click.pitch_scale = randf_range(0.5,1.5)
 	updateTicketBetValue(bet*2)
 	$btn2.modulate = Color(1, 0, 0, 0.5)
 	$btn2/btn2timer.start()
 
 func _on_btn_10_pressed() -> void:
+	$Click.play()
+	$Click.pitch_scale = randf_range(0.5,1.5)
 	updateTicketBetValue(bet*10)
 	$btn10.modulate = Color(1, 0, 0, 0.5)
 	$btn10/btn10timer.start()
 
 
 func _on_btn_25_pressed() -> void:
+	$Click.play()
+	$Click.pitch_scale = randf_range(0.5,1.5)
 	updateTicketBetValue(bet*25)
 	$btn25.modulate = Color(1, 0, 0, 0.5)
 	$btn25/btn25timer.start()

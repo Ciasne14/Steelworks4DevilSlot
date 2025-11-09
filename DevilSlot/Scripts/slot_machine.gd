@@ -229,7 +229,7 @@ func _on_btn_2_pressed() -> void:
 func _on_btn_10_pressed() -> void:
 	updateTicketBetValue(bet*10)
 	$btn10.modulate = Color(1, 0, 0, 0.5)
-	$btn105/btn10timer.start()
+	$btn10/btn10timer.start()
 
 
 func _on_btn_25_pressed() -> void:
